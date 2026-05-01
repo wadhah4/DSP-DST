@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Well Survey Tool</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🛢️ UAE Oil & Gas Well Survey Program</h1>
+            <p>Interactive well monitoring and survey scheduling tool</p>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+            <div class="control-group">
+                <label for="wellDropdown">Select Well:</label>
+                <select id="wellDropdown">
+                    <option value="">-- All Wells --</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="fieldFilter">Filter by Field:</label>
+                <select id="fieldFilter">
+                    <option value="">All Fields</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="statusFilter">Filter by Status:</label>
+                <select id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="Flowing">Flowing</option>
+                    <option value="Down">Down</option>
+                    <option value="Shut In">Shut In</option>
+                    <option value="Drilled">Drilled</option>
+                </select>
+            </div>
+            <button id="resetBtn" class="btn-reset">Reset Filters</button>
+            <button id="reportBtn" class="btn-report">📊 Generate Report</button>
+            <button id="csvBtn" class="btn-csv">📥 Export CSV</button>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-color" style="background: #4caf50;"></span>
+                <span>Flowing (Active)</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #ff9800;"></span>
+                <span>Down</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #f44336;"></span>
+                <span>Shut In</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #2196f3;"></span>
+                <span>Drilled</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            <!-- Map Section -->
+            <div class="map-section">
+                <div id="map"></div>
+            </div>
+
+            <!-- Stats Panel -->
+            <div class="stats-panel">
+                <div class="stat-card">
+                    <h3>Total Wells</h3>
+                    <p id="totalWells">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active (Flowing)</h3>
+                    <p id="activeWells">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Inactive (Down)</h3>
+                    <p id="inactiveWells">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Shut In</h3>
+                    <p id="shutInWells">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Well Details -->
+    <div id="wellModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="wellDetailsContainer"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
